@@ -83,9 +83,6 @@ body {
 .notes-wrapper input::-moz-placeholder {
   color: #d7dde0;
 }
-.notes-wrapper input:-ms-input-placeholder {
-  color: #d7dde0;
-}
 .notes-wrapper input::-ms-input-placeholder {
   color: #d7dde0;
 }
@@ -100,6 +97,10 @@ body {
 .notes-wrapper .note-text {
   font-family: 'Gamja Flower', cursive;
   font-size: 36px;
+}
+.notes-wrapper .current-category {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #4f4f4f;
 }
 .clearfix::after {
   content: "";

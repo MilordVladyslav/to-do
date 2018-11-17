@@ -10,14 +10,17 @@ var todoApp = {
         if(this.presentCategory == 'show-completed') {
             this.showCompleted();
             this.messagesView();
+            this.activeButton(this.presentCategory);
         }else if(this.presentCategory == 'show-uncompleted') {
             //categories[1].setAttribute('class', 'active');
             this.showUncompleted();
             this.messagesView();
+            this.activeButton(this.presentCategory);
         }else if(this.presentCategory == 'show-all') {
             //categories[2].setAttribute('class', 'active');
              this.showAll();
              this.messagesView();
+             this.activeButton(this.presentCategory);
          }
     },
     validation: function(nameTask) {
@@ -28,30 +31,30 @@ var todoApp = {
         this.notes.forEach(function(item) {
             if(item.text.toLowerCase() == nameTask.toLowerCase()) {
                 todoApp.messages.condition = 'You already have this note';
-                
+
             }
-            
+
         })
     },
     addNote: function(nameTask) {
         this.validation(nameTask);
         this.messagesView();
         if(this.messages.condition.length == 0){
-            
+
             this.notes.push({text: nameTask, completed: false, id: this.notes.length });
             this.messages.allAmount = this.notes.length;
             this.messages.condition = 'All okay )';
             this.messagesView();
 
         }
-        
+
         this.category();
         this.messagesView();
-        
+
     },
     creatingElements: function(item) {
         var div = document.createElement('div');
-        var pText = document.createElement('p'); 
+        var pText = document.createElement('p');
         var completeButton = document.createElement('button');
         var removeButton = document.createElement('button');
 
@@ -78,7 +81,7 @@ var todoApp = {
             div.appendChild(completeButton);
         }
 
-        document.querySelector('#notes').appendChild(div); 
+        document.querySelector('#notes').appendChild(div);
 
     },
 
@@ -91,11 +94,11 @@ var todoApp = {
              todoApp.removeNote(e.currentTarget.id)
           })
 
-    }, 
+    },
     complete: function(value) {
         this.notes.forEach(function(item) {
             if(item.id == value) {
-                item.completed = true;    
+                item.completed = true;
             }
         })
         var completed = this.notes.filter(function (note) {
@@ -104,7 +107,7 @@ var todoApp = {
         this.messages.completedAmount = completed.length;
         this.category();
         this.messagesView();
-    }, 
+    },
     messagesView: function() {
         var completedTodosTitle = document.querySelector('#completed-notes');
         var allNotes = document.querySelector('#all-notes');
@@ -117,7 +120,7 @@ var todoApp = {
             conditions.setAttribute('class', 'error');
         }
         completedTodosTitle.innerHTML = 'You have completed notes: ' + this.messages.completedAmount;
-        
+
         if(this.messages.allAmount > 1) {
             allNotes.innerHTML = `You have ${this.messages.allAmount} notes`;
         }else {
@@ -143,11 +146,11 @@ var todoApp = {
         whatShow.forEach(function(item) {
             todoApp.creatingElements(item);
         })
-        
+
     },
     clearList: function() {
         document.querySelectorAll('.note').forEach(function(item) {
-            item.remove(); 
+            item.remove();
         })
     },
     filtering: function(request) {
@@ -171,6 +174,16 @@ var todoApp = {
             return !note.completed;
         })
         this.show(uncompletedNotes);
+    },
+    activeButton: function(button) {
+      var categoryButtons = document.getElementsByClassName("categories");
+      var button = document.querySelector(`#${button}`);
+      for(var i = 0; i<categoryButtons.length; i++) {
+          categoryButtons[i].classList.remove('current-category');
+      }
+      button.classList.add('current-category');
+      
+      // button.classList.add('current-category');
     }
 }
 
@@ -189,7 +202,7 @@ document.querySelector("#name-form").addEventListener('submit', function(e) {
     e.target.elements.firstName.value = '';
 })
 document.querySelector('#search-text').addEventListener('input', function(e) {
-    todoApp.filtering(e.target.value);   
+    todoApp.filtering(e.target.value);
 })
 
 function c(arg) {
