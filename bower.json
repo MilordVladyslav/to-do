@@ -1,0 +1,14 @@
+{
+  "name": "pack.ru",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Vladyslav Petrachuk"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "reset-css": "^2.2.1",
+    "less": "less.js#^3.0.0"
+  }
+}
