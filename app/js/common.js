@@ -1,5 +1,6 @@
 var todoApp = {
     notes: [],
+    somealso: [],
     messages: {
         allAmount: '0',
         completedAmount: '0',
