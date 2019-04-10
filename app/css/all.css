@@ -83,6 +83,9 @@ body {
 .notes-wrapper input::-moz-placeholder {
   color: #d7dde0;
 }
+.notes-wrapper input:-ms-input-placeholder {
+  color: #d7dde0;
+}
 .notes-wrapper input::-ms-input-placeholder {
   color: #d7dde0;
 }
