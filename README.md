@@ -1,2 +1,4 @@
 # to-do
-JavaScript to-do application with some features )
+Featured JavaScript to-do application
+
+![alt text](screenshot.png "Screenshot")
